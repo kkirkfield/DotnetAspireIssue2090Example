@@ -41,4 +41,4 @@ dotnet ef migrations remove `
 
 ### Issue 2
 
-We are also unable to apply migrations from the AppHost project because the `AfterEndpointsAllocatedAsync` lifecycle hook is called before the database container is started but after the endpoint port is assigned. This code has been commented out in `ResourceBuilderExtensions`. We need a lifecycle hook that is called after all resources are running to be able to apply migrations from the AppHost project at startup.
+We are also unable to apply migrations from the AppHost project because the `AfterEndpointsAllocatedAsync` lifecycle hook is called before the database container is started but after the endpoint port is assigned. This code has been commented out in [ResourceBuilderExtensions.cs](src/AppHost/ResourceBuilderExtensions.cs#L29-L31). We need a lifecycle hook that is called after all resources are running to be able to apply migrations from the AppHost project at startup.
